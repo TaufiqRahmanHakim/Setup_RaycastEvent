@@ -29,7 +29,7 @@ public class RaycastEvent : MonoBehaviour
         }
     }
 }
-```chsarp
+```
 
 
 ![fcdnfgjfjryjk](https://github.com/TaufiqRahmanHakim/Setup_RaycastEvent/assets/112629423/1689b3bb-79d7-4976-aab3-1691902da89d)

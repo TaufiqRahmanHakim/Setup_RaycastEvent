@@ -8,14 +8,14 @@ using UnityEngine.Events;
 
 public class RaycastEvent : MonoBehaviour
 {
-    [SerializeField] private float direction;
+    [SerializeField] private float distance;
 
     public UnityEvent onHit;
     public UnityEvent onHitExit;
     RaycastHit raycastHit;
     private void Update()
     {
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out raycastHit, direction))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out raycastHit, distance))
         {
             onHit.Invoke();
             //Debug.Log("hit something");

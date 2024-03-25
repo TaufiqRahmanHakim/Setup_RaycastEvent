@@ -10,11 +10,15 @@ public class RaycastEvent : MonoBehaviour
 {
     [SerializeField] private float distance;
 
+    public LayerMask layerMask;
+    public Collider col;
+
     public UnityEvent onHit;
     public UnityEvent onHitOnce;
     public UnityEvent onHitOnceEveryHit;
     public UnityEvent onHitOnceExit;
     public UnityEvent onHitExit;
+
 
     RaycastHit raycastHit;
     private bool hasHitOnce = false;
@@ -23,8 +27,9 @@ public class RaycastEvent : MonoBehaviour
 
     private void Update()
     {
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out raycastHit, distance))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out raycastHit, distance, layerMask))
         {
+            col = raycastHit.collider;
             if (!hasHitOnceEveryHit) 
             {
                 if (!hasHitOnce)
@@ -52,6 +57,7 @@ public class RaycastEvent : MonoBehaviour
             hasHitOnceEveryHit = false;
         }
     }
+
     public void debugRayOnHit() => Debug.Log("debugRayOnHit");
     public void debugRayOnce() => Debug.Log("debugRayOnce");
     public void debugRayOnceEveryHit() => Debug.Log("debugRayOnceEveryHit");
